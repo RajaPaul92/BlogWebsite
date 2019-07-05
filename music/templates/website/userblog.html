@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <div class="container">
+	<div class="row">
+
+
+<link href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" rel="stylesheet" media="screen">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+
+</div>
+<body>
+ <div class="col-md-12">
+
+	    <form method="post" action="/userblogDetails/" class="form-horizontal" id="form-edit-client" enctype="multipart/form-data">{% csrf_token %}
+<fieldset>
+    <legend>User</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="client-name">Name</label>
+  <div class="col-md-4">
+  <input id="client-name" name="title" type="text" placeholder="enter your title" class="form-control input-md">
+  </div>
+</div>
+
+<!-- Prepended text-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="client-email">Description</label>
+  <div class="col-md-4">
+    <div class="input-group">
+      <span class="input-group-addon"></span>
+      <input id="client-email" name="description" class="form-control" placeholder="write your blog" type="text">
+</div>
+  </div>
+</div>
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="btn-save"></label>
+  <div class="col-md-4">
+    <button id="btn-save" name="btn-save" class="btn btn-success">Save</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+
+	   </div>
+
+
+
+
+<!-- LIST -->
+<div class=col-md-12>
+
+    <form id="form-list-client">
+            <legend>List of Blogs</legend>
+
+    <table class="table table-bordered table-condensed table-hover">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+
+        </thead>
+        <tbody id="form-list-client-body">
+        {% for i in data %}
+            <tr>
+                <td>{{i.title}}</td>
+                <td>{{i.description}}</td>
+                <td>
+
+                    <a href="/usereditblog/{{i.id}}" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-edit text-primary"></i> </a>
+                    <a href="/userdeleteblog/{{i.id}}" class="btn btn-default btn-sm "> <i class="glyphicon glyphicon-trash text-danger"></i> </a>
+
+
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </form>
+    </div>
+
+
+<br>
+
+
+
+</body>
+</html>
